@@ -32,7 +32,7 @@ $ curl http://${GATEWAY_URL}/tea
 Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. DestinationRule resources are not defined in [initial-setup](https://github.com/muratzorer/k8s-istio/tree/master/initial-setup) configuration. So requests will be routed to both temperature service v1 and v2 equally.
 
 ## How to test/debug pods
-We can use network tools installed lightweight alpine container to get interaction with pods/services
+We can create lightweight alpine pod with network tools installed, then get interaction with pods/services
 ```
 $ kubectl run --restart=Never --image=raesene/alpine-nettools nettools
 $ kubectl exec -it nettools -- /bin/sh
