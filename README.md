@@ -2,12 +2,14 @@
 Kubernetes and Istio walkthrough using dockerized spring services
 
 ## Prerequisites
-* Minikube
-* Istio
-* Docker
+* [hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-kubectl)
+* [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-minikube)
+* [istio](https://istio.io/docs/setup/kubernetes/quick-start/#option-1-install-istio-without-mutual-tls-authentication-between-sidecars)
+* [docker](https://www.docker.com/get-started)
 
 ## Get Started
-1. Run your istio installed kubernetes cluster (https://istio.io/docs/setup/kubernetes/platform-setup/minikube/)
+1. Run your istio installed kubernetes cluster via [minikube](https://istio.io/docs/setup/kubernetes/platform-setup/minikube/)
 ```
 $ minikube start --memory=2048 --cpus=2 --kubernetes-version=v1.10.0 \
     --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota" \
