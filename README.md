@@ -1,6 +1,11 @@
 # k8s-istio
 Kubernetes and Istio walkthrough using dockerized spring services
 
+## Prerequisites
+* Minikube
+* Istio
+* Docker
+
 ## Get Started
 1. Run your istio installed kubernetes cluster (https://istio.io/docs/setup/kubernetes/platform-setup/minikube/)
 ```
@@ -16,6 +21,14 @@ kubens tutorial
 kubectl apply -f initial-setup/service-and-deployment.yaml
 kubectl apply -f initial-setup/gateway.yaml
 ```
+3. Test application after setting nodeport to service (external load balancer does not exist in minikube)
+```
+export INGRESS_HOST=$(minikube ip)
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+curl http://${GATEWAY_URL}/tea
+```
+Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. DestinationRule resources are not defined in [initial-setup](https://github.com/muratzorer/k8s-istio/tree/master/initial-setup) configuration. So requests will be routed to both temperature service v1 and v2 equally.
 
 ## How to test/debug pods
 We can use network tools installed lightweight alpine container to get interaction with pods/services
