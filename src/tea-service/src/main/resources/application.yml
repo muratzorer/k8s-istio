@@ -1,0 +1,14 @@
+server:
+  port: 9080
+  
+build:
+  version: '@project.version@'
+  timestamp: '@maven.build.timestamp@'
+  
+spring:
+  application:
+    name: '@project.artifactId@'
+  sleuth:
+    propagation-keys:
+    - x-request-id
+    - x-ot-span-context

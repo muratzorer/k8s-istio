@@ -1,0 +1,89 @@
+##################################################################################################
+# Tea service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: tea-service
+  labels:
+    app: tea-service
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: tea-service
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tea-service-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tea-service
+        version: v1
+    spec:
+      containers:
+      - name: tea-service
+        image: muratzorer/tea-service:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9080
+---
+##################################################################################################
+# Temperature service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: temperature-service
+  labels:
+    app: temperature-service
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: temperature-service
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: temperature-service-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: temperature-service
+        version: v1
+    spec:
+      containers:
+      - name: temperature-service
+        image: muratzorer/temperature-service:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: temperature-service-v2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: temperature-service
+        version: v2
+    spec:
+      containers:
+      - name: temperature-service
+        image: muratzorer/temperature-service:2.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+---
