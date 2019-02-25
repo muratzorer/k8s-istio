@@ -29,7 +29,7 @@ spec:
       containers:
       - name: tea-service
         image: muratzorer/tea-service:1.0.0
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
 ---
