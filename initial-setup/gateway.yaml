@@ -28,6 +28,8 @@ spec:
         exact: /
     - uri:
         exact: /tea
+    - uri:
+        prefix: /actuator
     route:
     - destination:
         host: tea-service
