@@ -1,16 +1,16 @@
 # k8s-istio
-Kubernetes and Istio walkthrough using dockerized spring services
+Kubernetes and Istio (v1.1) walkthrough using dockerized spring services
 
 ## Prerequisites
 * [hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-kubectl)
 * [kubens & kubectx](https://github.com/ahmetb/kubectx#installation)
-* [minikube](https://istio.io/docs/setup/kubernetes/prepare/platform-setup/minikube)
+* [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-minikube)
 * [istio](https://istio.io/docs/setup/kubernetes/quick-start/#option-1-install-istio-without-mutual-tls-authentication-between-sidecars)
 * [docker](https://www.docker.com/get-started)
 
 ## Get Started
-1. Run your istio installed kubernetes cluster via [minikube](https://istio.io/docs/setup/kubernetes/platform-setup/minikube/)
+1. Run your istio installed kubernetes cluster via [minikube](https://istio.io/docs/setup/kubernetes/prepare/platform-setup/minikube)
 ```bash
 $ minikube start --memory=2048 --cpus=2 --kubernetes-version=v1.10.0 \
     --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota" \
