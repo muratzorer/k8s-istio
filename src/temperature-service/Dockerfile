@@ -20,5 +20,5 @@ ENV SERVICE_VERSION ${service_version:-1.0.0}
 # Make port 9080 available to the world outside this container
 EXPOSE 9080
 
-# Run app.py when the container launches
+# Run app.jar when the container launches
 CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
