@@ -5,7 +5,7 @@ Kubernetes and Istio walkthrough using dockerized spring services
 * [hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-kubectl)
 * [kubens & kubectx](https://github.com/ahmetb/kubectx#installation)
-* [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-minikube)
+* [minikube](https://istio.io/docs/setup/kubernetes/prepare/platform-setup/minikube)
 * [istio](https://istio.io/docs/setup/kubernetes/quick-start/#option-1-install-istio-without-mutual-tls-authentication-between-sidecars)
 * [docker](https://www.docker.com/get-started)
 
@@ -16,7 +16,7 @@ $ minikube start --memory=2048 --cpus=2 --kubernetes-version=v1.10.0 \
     --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota" \
     --vm-driver=virtualbox
 ```
-2. Clone the repository, create new namespace for the tutorial and apply initial resources declaratively 
+2. Clone the repository, create new namespace for the tutorial and apply initial resources declaratively
 ```bash
 $ git clone https://github.com/muratzorer/k8s-istio.git
 $ kubectl create ns tutorial
