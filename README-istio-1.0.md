@@ -32,7 +32,7 @@ $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway
 $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 $ curl http://${GATEWAY_URL}/tea
 ```
-Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. DestinationRule resources are not defined in [initial-setup](https://github.com/muratzorer/k8s-istio/tree/master/initial-setup) configuration. So requests will be routed to both temperature service v1 and v2 equally.
+Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. We defined both v1 and v2 temperature-service in [DestinationRule](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/destination-rule.yaml) but we did not give any *weight* in VirtualService routes, so requests will be routed to both temperature service v1 and v2 equally.
 
 ## How to test/debug pods
 We can create lightweight alpine pod with network tools installed, then get interaction with pods/services
