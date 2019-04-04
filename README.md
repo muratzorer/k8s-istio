@@ -32,7 +32,7 @@ $ minikube tunnel
 ```bash
 $ kubectl get svc istio-ingressgateway -n istio-system
 ```
-5. Test application
+5. Test application (Remember we set port 80 in [Gateway](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/gateway.yaml))
 ```bash
 $ export GATEWAY_URL=$(kubectl get svc istio-ingressgateway -n istio-system | awk 'NR==2{print $4}')
 $ curl http://${GATEWAY_URL}/tea
