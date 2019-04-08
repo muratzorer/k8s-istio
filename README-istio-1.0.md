@@ -1,5 +1,5 @@
 # k8s-istio
-Kubernetes and Istio (v1.0) walkthrough using dockerized spring services
+Kubernetes and Istio (v1.0) tutorial using dockerized spring services
 
 ## Prerequisites
 * [hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor)
