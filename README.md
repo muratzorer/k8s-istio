@@ -12,7 +12,7 @@ Kubernetes and Istio (v1.1) walkthrough using dockerized spring services
 ## Get Started
 1. Run your istio installed kubernetes cluster via [minikube](https://istio.io/docs/setup/kubernetes/prepare/platform-setup/minikube)
 ```bash
-$ minikube start --memory=4096 --cpus=2 --kubernetes-version=v1.13.0 --vm-driver=virtualbox
+$ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.13.0 --vm-driver=virtualbox
 ```
 2. Clone the repository, create new namespace for the tutorial and apply initial resources declaratively
 ```bash
