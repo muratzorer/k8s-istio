@@ -21,8 +21,9 @@ $ kubectl create ns tutorial
 $ kubectl label namespace tutorial istio-injection=enabled
 $ kubens tutorial
 $ kubectl apply -f initial-setup/service-and-deployment.yaml
-$ kubectl apply -f initial-setup/gateway.yaml
 $ kubectl apply -f initial-setup/destination-rule.yaml
+$ kubectl apply -f virtual-services.yaml
+$ kubectl apply -f initial-setup/gateway.yaml
 ```
 3. Open new tab in terminal and simulate LoadBalancer. I suggest you to read [how](https://github.com/kubernetes/minikube/blob/master/docs/tunnel.md)
 ```bash
@@ -37,7 +38,7 @@ $ kubectl get svc istio-ingressgateway -n istio-system
 $ export GATEWAY_URL=$(kubectl get svc istio-ingressgateway -n istio-system | awk 'NR==2{print $4}')
 $ curl http://${GATEWAY_URL}/tea
 ```
-Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. We defined both v1 and v2 temperature-service in [DestinationRule](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/destination-rule.yaml) but we did not give any *weight* in VirtualService routes, so requests will be routed to both temperature service v1 and v2 equally.
+Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. We defined both v1 and v2 temperature-service in [DestinationRule](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/destination-rule.yaml) and weighted them equally in [VirtualService](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/virtual-services.yaml)
 
 ## How to test/debug pods
 We can create lightweight alpine pod with network tools installed, then get interaction with pods/services
