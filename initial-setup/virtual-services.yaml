@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: tea-service
+spec:
+  hosts:
+  - tea-service
+  http:
+  - route:
+    - destination:
+        host: tea-service
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: temperature-service
+spec:
+  hosts:
+    - temperature-service
+  http:
+  - route:
+    - destination:
+        host: temperature-service
+        subset: v1
+      weight: 50
+    - destination:
+        host: temperature-service
+        subset: v2
+      weight: 50
