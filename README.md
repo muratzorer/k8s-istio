@@ -22,7 +22,7 @@ $ kubectl label namespace tutorial istio-injection=enabled
 $ kubens tutorial
 $ kubectl apply -f initial-setup/service-and-deployment.yaml
 $ kubectl apply -f initial-setup/destination-rule.yaml
-$ kubectl apply -f virtual-services.yaml
+$ kubectl apply -f initial-setup/virtual-services.yaml
 $ kubectl apply -f initial-setup/gateway.yaml
 ```
 3. Open new tab in terminal and simulate LoadBalancer. I suggest you to read [how](https://github.com/kubernetes/minikube/blob/master/docs/tunnel.md)
