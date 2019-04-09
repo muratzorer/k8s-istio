@@ -40,10 +40,4 @@ $ curl http://${GATEWAY_URL}/tea
 ```
 Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. We defined both v1 and v2 temperature-service in [DestinationRule](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/destination-rule.yaml) and weighted them equally in [VirtualService](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/virtual-services.yaml)
 
-## How to test/debug pods
-We can create lightweight alpine pod with network tools installed, then get interaction with pods/services
-```bash
-$ kubectl run --restart=Never --image=raesene/alpine-nettools nettools
-$ kubectl exec -it nettools -- /bin/sh
-$ curl http://tea-service:9080
-```
+See [HOW-TOs](https://github.com/muratzorer/k8s-istio/blob/master/HOW-TOs.md) for some cheatsheet info
