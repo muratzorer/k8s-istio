@@ -24,7 +24,7 @@ $ kubectl label namespace tutorial istio-injection=enabled
 $ kubens tutorial
 $ kubectl apply -f initial-setup/service-and-deployment.yaml
 $ kubectl apply -f initial-setup/destination-rule.yaml
-$ kubectl apply -f virtual-services.yaml
+$ kubectl apply -f initial-setup/virtual-services.yaml
 $ kubectl apply -f initial-setup/gateway.yaml
 ```
 3. Test application after setting nodeport to service (external load balancer does not exist in minikube)
