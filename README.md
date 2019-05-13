@@ -41,3 +41,17 @@ $ curl http://${GATEWAY_URL}/tea
 Now you should see "tea is hot" or "tea is cold" depending on the version of temperature service. We defined both v1 and v2 temperature-service in [DestinationRule](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/destination-rule.yaml) and weighted them equally in [VirtualService](https://github.com/muratzorer/k8s-istio/blob/master/initial-setup/virtual-services.yaml)
 
 See [HOW-TOs](https://github.com/muratzorer/k8s-istio/blob/master/HOW-TOs.md) for some cheatsheet info
+
+## kubectl Unauthorized Error - corrupted cluster connection
+```bash
+$ kubectl cluster-info
+```
+If the output is:
+```
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+error: You must be logged in to the server (Unauthorized)
+```
+Then kubectl cluster connection is corrupted. Run the following command:
+```bash
+$ kubectl config unset clusters
+```
