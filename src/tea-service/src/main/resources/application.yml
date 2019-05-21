@@ -12,3 +12,10 @@ spring:
     propagation-keys:
     - x-request-id
     - x-ot-span-context
+    
+# serves enabled actuator endpoints    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
