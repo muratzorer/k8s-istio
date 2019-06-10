@@ -1,13 +1,13 @@
 # k8s-istio
-Kubernetes and Istio (v1.1) tutorial using dockerized spring services
+Kubernetes and Istio tutorial using dockerized spring services
 
-## Prerequisites
-* [hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor)
-* [kubectl](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-kubectl)
+## Prerequisites (With versions that are tested for macOS)
+* [hypervisor - virtualbox v5.2.22](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor)
+* [kubectl v1.14.1](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-kubectl)
 * [kubens & kubectx](https://github.com/ahmetb/kubectx#installation)
-* [minikube v1.0.0](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-minikube)
-* [istio](https://istio.io/docs/setup/kubernetes/quick-start/#option-1-install-istio-without-mutual-tls-authentication-between-sidecars)
-* [docker](https://www.docker.com/get-started)
+* [minikube v0.34.1](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-minikube)
+* [istio v1.1.7](https://istio.io/docs/setup/kubernetes/quick-start/#option-1-install-istio-without-mutual-tls-authentication-between-sidecars)
+* [docker v2.0.0.3](https://www.docker.com/get-started)
 
 ## Get Started
 1. Run your istio installed kubernetes cluster via [minikube](https://istio.io/docs/setup/kubernetes/prepare/platform-setup/minikube)
