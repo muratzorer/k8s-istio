@@ -14,6 +14,11 @@ spec:
   selector:
     app: tea-service
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tea-service
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -30,6 +35,7 @@ spec:
         app: tea-service
         version: v1
     spec:
+      serviceAccountName: tea-service
       containers:
       - name: tea-service
         image: muratzorer/tea-service:1.0.0
@@ -61,6 +67,11 @@ spec:
   selector:
     app: temperature-service
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: temperature-service
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -77,6 +88,7 @@ spec:
         app: temperature-service
         version: v1
     spec:
+      serviceAccountName: temperature-service
       containers:
       - name: temperature-service
         image: muratzorer/temperature-service:1.0.0
@@ -100,6 +112,7 @@ spec:
         app: temperature-service
         version: v2
     spec:
+      serviceAccountName: temperature-service
       containers:
       - name: temperature-service
         image: muratzorer/temperature-service:2.0.0
