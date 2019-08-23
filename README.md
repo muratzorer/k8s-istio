@@ -55,3 +55,11 @@ Then kubectl cluster connection is corrupted. Run the following command:
 ```bash
 $ kubectl config unset clusters
 ```
+
+## Querying etcd
+```bash
+$ cd /var/lib/minikube/certs
+$ etcdctl --cacert="etcd/ca.crt" --key=etcd/peer.key --cert=etcd/peer.crt get / --prefix --keys-only
+$ etcdctl --cacert="etcd/ca.crt" --key=etcd/peer.key --cert=etcd/peer.crt get /registry/services/specs/tutorial/tea-service
+-w fields
+```
