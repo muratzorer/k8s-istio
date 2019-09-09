@@ -49,6 +49,9 @@ spec:
           limits:
             memory: 1Gi
             cpu: 1
+        env:
+          - name: SERVICE_NAME
+            value: "tea-service"
       terminationGracePeriodSeconds: 30
 ---
 ##################################################################################################
