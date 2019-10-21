@@ -1,0 +1,62 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: foo-service-api
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - api-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /core/concentrationWS
+    route:
+    - destination:
+        host: foo-service
+        subset: v1
+        port:
+          number: 9080
+    timeout: 10s
+  - match:
+    - uri:
+        prefix: /foo-service
+    route:
+    - destination:
+        host: foo-service
+        subset: v1
+        port:
+          number: 9081
+    timeout: 10s
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bar-service-api
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - api-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /TfsAllowanceService
+    route:
+    - destination:
+        host: bar-service
+        subset: v1
+        port:
+          number: 9080
+    timeout: 10s
+  - match:
+    - uri:
+        prefix: /bar-service
+    route:
+    - destination:
+        host: bar-service
+        subset: v1
+        port:
+          number: 9081
+    timeout: 10s
+---

@@ -1,0 +1,126 @@
+##################################################################################################
+# Foo service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+  labels:
+    app: foo-service
+spec:
+  ports:
+  - port: 9080
+    name: http-app
+    targetPort: 9080
+  - port: 9081
+    name: http-actuator
+    targetPort: 9081
+  selector:
+    app: foo-service
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: foo-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-service-v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: foo-service
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: foo-service
+        version: v1
+    spec:
+      serviceAccountName: foo-service
+      containers:
+      - name: muhtar
+        image: muratzorer/muhtar:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+        - containerPort: 9081
+        resources:
+          requests:
+            memory: 300Mi
+            cpu: 100m
+          limits:
+            memory: 1Gi
+            cpu: 500m
+        env:
+          - name: SERVICE_NAME
+            value: "foo-service"
+      terminationGracePeriodSeconds: 30
+      imagePullSecrets:
+        - name: registry-secret
+---
+##################################################################################################
+# Bar service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: bar-service
+  labels:
+    app: bar-service
+spec:
+  ports:
+  - port: 9080
+    name: http-app
+    targetPort: 9080
+  - port: 9081
+    name: http-actuator
+    targetPort: 9081
+  selector:
+    app: bar-service
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: bar-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bar-service-v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bar-service
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: bar-service
+        version: v1
+    spec:
+      serviceAccountName: bar-service
+      containers:
+      - name: muhtar
+        image: muratzorer/muhtar:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+        - containerPort: 9081
+        resources:
+          requests:
+            memory: 300Mi
+            cpu: 100m
+          limits:
+            memory: 1Gi
+            cpu: 500m
+        env:
+          - name: SERVICE_NAME
+            value: "bar-service"
+      terminationGracePeriodSeconds: 30
+      imagePullSecrets:
+        - name: registry-secret
+---
