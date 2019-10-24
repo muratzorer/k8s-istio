@@ -67,13 +67,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fghfhfgf-service
+  name: bar-service
   labels:
     app: bar-service
 spec:
   ports:
-  - port: 9080
-    name: http-app
+  - port: 9088
+    name: http-appdfsfd
     targetPort: 9080
   - port: 9081
     name: http-actuator
