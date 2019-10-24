@@ -26,7 +26,7 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: foo-service-v1
+  name: daasdsad-service-v1
 spec:
   replicas: 2
   selector:
@@ -67,7 +67,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bar-service
+  name: fghfhfgf-service
   labels:
     app: bar-service
 spec:
