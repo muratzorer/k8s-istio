@@ -28,7 +28,7 @@ helm template install/kubernetes/helm/istio --name istio --namespace istio-syste
     --set "kiali.dashboard.grafanaURL=http://localhost:3000" | kubectl apply -f -
 ```
 
-## How to check kube-proxy configuration
+## How to check kube-proxy configuration
 ```bash
 kubectl exec -ti -n kube-system kube-proxy-xtkqp cat /var/lib/kube-proxy/config.conf
 ```
